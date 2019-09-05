@@ -1,6 +1,6 @@
 Another Movie App :bowtie:
 ========
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://choosealicense.com/licenses/apache-2.0/)
+[![CircleCI](https://circleci.com/gh/eg-droid/AnotherMovieApp.svg?style=svg)](https://circleci.com/gh/eg-droid/AnotherMovieApp)[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://choosealicense.com/licenses/apache-2.0/)
 
 This app is based on EGDroid program exercise. It allows you to query [themoviedb](https://www.themoviedb.org/en) for popular and upcoming movies and add them to your collection. You can also view trailers, comments, share and more! 
 
