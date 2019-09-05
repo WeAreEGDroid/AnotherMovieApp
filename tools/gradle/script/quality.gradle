@@ -9,7 +9,7 @@ task findbugs(type: FindBugs, dependsOn: "assembleDebug") {
     effort = "max"
     reportLevel = "high"
     excludeFilter = new File("${project.rootDir}/tools/rules/rules-findbugs.xml")
-    classes = files("${buildDir}/intermediates/classes")
+    classes = files("${buildDir}/intermediates/javac")
 
     source 'src'
     include '**/*.java'
