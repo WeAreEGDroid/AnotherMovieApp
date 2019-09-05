@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  analyzer:
+    docker:
+    - image: circleci/android:api-28
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+
+    steps:
+    - checkout
+    - run:
+        name: Generating Gradle wrapper files ⚙️...
+        command: ./gradlew wrapper
+    - run:
+        name: Cleaning 🧹...
+        command: ./gradlew clean
+    - run:
+        name: Building project 🏗...
+        command: ./gradlew build
+    - run:
+        name: Checking against possible bugs 👀...
+        command: ./gradlew check && ./gradlew assemble
+
+  unit-tests:
+    docker:
+    - image: circleci/android:api-28
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+
+    steps:
+    - checkout
+    - run:
+        name: Running unit tests 🥶...
+        command: ./gradlew test
+
+workflows:
+  version: 2
+  ci_workflow:
+    jobs:
+    - analyzer
+    - unit-tests
