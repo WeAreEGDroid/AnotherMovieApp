@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
+apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
+    compileSdkVersion deps.build.compileSdkVersion
     defaultConfig {
         applicationId "com.egdroid.movieapp"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion deps.build.minSdkVersion
+        targetSdkVersion deps.build.targetSdkVersion
+        versionCode deps.build.versionCode
+        versionName deps.build.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,14 +16,81 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
+    //UI
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+    implementation deps.support.constraintLayout
+
+    // Arch Component
+    implementation deps.architecturecomponents.lifecycles
+    implementation deps.architecturecomponents.room
+    annotationProcessor deps.architecturecomponents.room_compiler
+
+    // Rx
+    implementation deps.rx.java
+    implementation deps.rx.relay
+    implementation deps.rx.android
+    implementation deps.rx.binding
+    implementation deps.rx.retrofitAdapter
+
+    // Dependency Injection
+    implementation deps.dependencyInjection.dagger
+    implementation deps.dependencyInjection.daggerSupportAndroid
+    annotationProcessor deps.dependencyInjection.daggerCompiler
+    annotationProcessor deps.dependencyInjection.daggerAndroidCompiler
+
+    // View Binding
+    implementation deps.viewBinding.butterknife
+    annotationProcessor deps.viewBinding.butterknifeCompiler
+
+    // Images
+    implementation deps.image.glide
+    annotationProcessor deps.image.glideCompiler
+
+    // Network
+    implementation deps.network.retrofit
+    implementation deps.network.retrofitGsonConverter
+
+    // Log
+    implementation deps.log.timber
+    debugImplementation deps.log.leakCanaryDebug
+    releaseImplementation deps.log.leakCanaryRelease
+
+    // Testing
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.robolectric
+    androidTestImplementation deps.test.espresso
+    androidTestImplementation deps.test.mockito
+    androidTestImplementation deps.test.powermock_mockito
+    androidTestImplementation deps.test.powermock_easymock
+    androidTestImplementation deps.test.powermock_reflect
+    androidTestImplementation deps.test.powermock_junit4
+    androidTestImplementation deps.test.powermock_junit4_rule
+    androidTestImplementation deps.test.powermock_classloading
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    configurations.all {
+        resolutionStrategy {
+            force deps.support.annotations
+        }
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion deps.versions.support
+            }
+        }
+    }
 }
