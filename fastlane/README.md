@@ -1,4 +1,4 @@
-fastlane documentation
+Fastlane Documentation
 ================
 # Installation
 
