@@ -1,0 +1,88 @@
+android {
+
+    compileSdkVersion deps.build.compileSdkVersion
+
+    defaultConfig {
+
+        minSdkVersion deps.build.minSdkVersion
+        targetSdkVersion deps.build.targetSdkVersion
+        versionCode deps.build.versionCode
+        versionName deps.build.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    //UI
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+    implementation deps.support.constraintLayout
+
+    // Arch Component
+    implementation deps.architecturecomponents.lifecycles
+    implementation deps.architecturecomponents.room
+    annotationProcessor deps.architecturecomponents.room_compiler
+
+    // Rx
+    api deps.rx.java
+    api deps.rx.relay
+    api deps.rx.android
+    api deps.rx.binding
+    api deps.rx.retrofitAdapter
+
+    // Dependency Injection
+    api deps.dependencyInjection.dagger
+    api deps.dependencyInjection.daggerSupportAndroid
+    annotationProcessor deps.dependencyInjection.daggerCompiler
+    annotationProcessor deps.dependencyInjection.daggerAndroidCompiler
+
+    // View Binding
+    api deps.viewBinding.butterknife
+    annotationProcessor deps.viewBinding.butterknifeCompiler
+
+    // Images
+    api deps.image.glide
+    annotationProcessor deps.image.glideCompiler
+
+    // Network
+    implementation deps.network.retrofit
+    implementation deps.network.retrofitGsonConverter
+
+    // Log
+    implementation deps.log.timber
+    debugImplementation deps.log.leakCanaryDebug
+    releaseImplementation deps.log.leakCanaryRelease
+
+    // Testing
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+    androidTestImplementation deps.test.robolectric
+    androidTestImplementation deps.test.mockito
+    androidTestImplementation deps.test.powermock_mockito
+    androidTestImplementation deps.test.powermock_easymock
+    androidTestImplementation deps.test.powermock_reflect
+    androidTestImplementation deps.test.powermock_junit4
+    androidTestImplementation deps.test.powermock_junit4_rule
+    androidTestImplementation deps.test.powermock_classloading
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    configurations.all {
+        resolutionStrategy {
+            force deps.support.annotations
+        }
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion deps.versions.support
+            }
+        }
+    }
+}
