@@ -1,2 +1,3 @@
-include ':app', ':common', ':datasource:local', ':datasource:remote'
-rootProject.name='AnotherMovieApp'
+include ':app', ':common', ':models:remotemodel', ':models:localmodel', ':models:datasourcemodel',
+        ':features:upcomingmovies', ':datasource:local', ':datasource:remote', ':models:mapper'
+rootProject.name = 'AnotherMovieApp'

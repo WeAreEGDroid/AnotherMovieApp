@@ -3,6 +3,7 @@ apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 apply from: "$project.rootDir/tools/gradle/base.gradle"
 
 android {
+    compileSdkVersion 28
 
     buildTypes {
         release {
@@ -11,10 +12,12 @@ android {
         }
     }
 
-    dependencies{
+}
 
-        api project(":models:localmodel")
+dependencies {
 
-    }
+    implementation project(":models:remotemodel")
+    implementation project(":models:localmodel")
+    implementation project(":models:datasourcemodel")
 
 }
