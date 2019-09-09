@@ -60,6 +60,9 @@ dependencies {
     debugImplementation deps.log.leakCanaryDebug
     releaseImplementation deps.log.leakCanaryRelease
 
+    api deps.kotlin.kotlin
+    api deps.kotlin.kotlinCore
+
     // Testing
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
