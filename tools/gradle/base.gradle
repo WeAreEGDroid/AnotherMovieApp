@@ -1,3 +1,7 @@
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
 android {
 
     compileSdkVersion deps.build.compileSdkVersion
@@ -23,12 +27,14 @@ dependencies {
     //UI
     implementation deps.support.design
     implementation deps.support.recyclerview
+    implementation deps.support.superRecyclerView
     implementation deps.support.constraintLayout
 
     // Arch Component
     implementation deps.architecturecomponents.lifecycles
     implementation deps.architecturecomponents.room
-    annotationProcessor deps.architecturecomponents.room_compiler
+    implementation deps.architecturecomponents.room_kotlin
+    kapt deps.architecturecomponents.room_compiler
 
     // Rx
     api deps.rx.java
@@ -54,6 +60,7 @@ dependencies {
     // Network
     implementation deps.network.retrofit
     implementation deps.network.retrofitGsonConverter
+    implementation deps.network.okhttpLogging
 
     // Log
     implementation deps.log.timber

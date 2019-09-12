@@ -23,7 +23,9 @@ def versions = [
         mockito    : '1.9.5',
         robolectric: '3.8',
         kotlinCore : '1.1.0',
-        kotlin     : '1.3.50'
+        kotlin     : '1.3.50',
+        okhttpLogging : '3.12.0',
+        superRecyclerView : '1.1.4'
 ]
 
 def support = [
@@ -31,6 +33,7 @@ def support = [
         design          : "com.android.support:design:${versions.support}",
         recyclerview    : "com.android.support:recyclerview-v7:${versions.support}",
         constraintLayout: 'com.android.support.constraint:constraint-layout:1.0.2',
+        superRecyclerView: "com.malinskiy:superrecyclerview:${versions.superRecyclerView}"
 ]
 
 def rx = [
@@ -43,7 +46,8 @@ def rx = [
 
 def network = [
         retrofit             : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
-        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+        okhttpLogging: "com.squareup.okhttp3:logging-interceptor:${versions.okhttpLogging}"
 ]
 
 def dependencyInjection = [
@@ -87,6 +91,7 @@ def test = [
 def architecturecomponents = [
         lifecycles   : "android.arch.lifecycle:common-java8:1.1.0",
         room         : "androidx.room:room-runtime:${versions.room}",
+        room_kotlin : "androidx.room:room-ktx:${versions.room}",
         room_compiler: "androidx.room:room-compiler:${versions.room}",
 ]
 

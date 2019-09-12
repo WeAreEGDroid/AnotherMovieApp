@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
 apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 apply from: "$project.rootDir/tools/gradle/base.gradle"
 
