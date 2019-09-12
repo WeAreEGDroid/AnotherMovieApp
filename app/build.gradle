@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
 apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 apply from: "$project.rootDir/tools/gradle/base.gradle"
 
@@ -18,4 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+dependencies{
+
+    implementation project(":presentation:popularmoviespresentation")
+
 }
