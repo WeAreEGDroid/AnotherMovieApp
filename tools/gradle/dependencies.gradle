@@ -3,7 +3,8 @@ def build = [
         minSdkVersion    : 21,
         targetSdkVersion : 28,
         versionCode      : 1,
-        versionName      : "1.0"
+        versionName      : "1.0",
+        buildToolsVersion: "29.0.0"
 ]
 
 def versions = [
@@ -66,9 +67,9 @@ def image = [
 def test = [
         junit                 : "junit:junit:${versions.junit}",
         runner                : "com.android.support.test:runner:${versions.testrunner}",
-        espresso              : "com.android.support.test.espresso:espresso-core:${versions.espresso}",
+        espresso              : "com.android.support.test.espresso:espresso-base:${versions.espresso}",
         robolectric           : "org.robolectric:robolectric:${versions.robolectric}",
-        mockito               : "org.mockito:mockito-core:${versions.mockito}",
+        mockito               : "org.mockito:mockito-base:${versions.mockito}",
         powermock_mockito     : "org.powermock:powermock-api-mockito:${versions.powermock}",
         powermock_easymock    : "org.powermock:powermock-api-easymock:${versions.powermock}",
         powermock_reflect     : "org.powermock:powermock-reflect:${versions.powermock}",

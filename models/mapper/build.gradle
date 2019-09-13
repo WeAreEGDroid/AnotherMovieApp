@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
+apply from: "$project.rootDir/tools/gradle/script/base.gradle"
+
+android {
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':models:local-model')
+    implementation project(':models:remote-model')
+    implementation project(':models:datasource-model')
+    implementation project(':models:entitiy-model')
+    implementation project(':models:ui-model')
+}
