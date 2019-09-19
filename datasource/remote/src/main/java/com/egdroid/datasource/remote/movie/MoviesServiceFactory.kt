@@ -1,7 +1,7 @@
 package com.egdroid.datasource.remote.movie
 
 import android.content.Context
-import com.egdroid.datasource.remote.utils.NetworkUtils
+import com.egdroid.datasource.remote.BuildConfig
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -31,7 +31,7 @@ object MoviesServiceFactory {
     private fun provideOkHttpClient(context: Context): OkHttpClient {
         return OkHttpClient.Builder()
                 .addInterceptor(provideLoggingInterceptor())
-//                .addInterceptor(provideAuthInterceptor())
+                .addInterceptor(provideQueryParamsInterceptor())
                 .addInterceptor(provideCashingInterceptor())
                 .addNetworkInterceptor(provideOfflineCashingInterceptor(context))
                 .cache(provideCache(context))
@@ -47,8 +47,23 @@ object MoviesServiceFactory {
     private fun provideAuthInterceptor(): Interceptor {
         return Interceptor { chain ->
             val request = chain.request().newBuilder()
-                    .addHeader("Application-Auth", "key")
+                    .addHeader("api_key", BuildConfig.ApiKey)
+                    .addHeader("page", "1")
+                    .addHeader("language", "en-US")
                     .build()
+            chain.proceed(request)
+        }
+    }
+
+    private fun provideQueryParamsInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            var request = chain.request()
+            val url = request.url().newBuilder()
+                    .addQueryParameter("api_key", BuildConfig.ApiKey)
+                    .addQueryParameter("page", "1")
+                    .addQueryParameter("language", "en-US")
+                    .build()
+            request = request.newBuilder().url(url).build()
             chain.proceed(request)
         }
     }
@@ -82,7 +97,7 @@ object MoviesServiceFactory {
         return Interceptor { chain ->
             val request = chain.request()
 
-            if (!NetworkUtils.isNetworkConnected(context)) {
+            if (!isNetworkConnected(context)) {
                 val cacheControl = CacheControl.Builder()
                         .maxStale(7, TimeUnit.DAYS)
                         .build()
