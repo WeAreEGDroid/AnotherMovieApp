@@ -1,6 +1,4 @@
 <manifest package="com.egdroid.datasource.remote">
 
     <uses-permission name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
