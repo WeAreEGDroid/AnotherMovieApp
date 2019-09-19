@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken
 
 class DataConverter {
 
-    companion object {
+object DataConverter {
         @TypeConverter
         @JvmStatic
         fun fromIntList(list: List<Int>?): String? {
