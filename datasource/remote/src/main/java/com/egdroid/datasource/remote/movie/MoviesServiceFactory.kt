@@ -40,7 +40,6 @@ object MoviesServiceFactory {
 
     private fun provideLoggingInterceptor(): Interceptor {
         val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.HEADERS
         logging.level = HttpLoggingInterceptor.Level.BODY
         return logging
     }
