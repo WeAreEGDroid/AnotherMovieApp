@@ -12,10 +12,7 @@ android {
 }
 
 dependencies{
-    api project(":datasource:local")
-    api project(":datasource:remote")
     api project(":models:localmodel")
     api project(":models:remotemodel")
     api project(":models:mapper")
-    api project(":models:datasourcemodel")
 }
