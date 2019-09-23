@@ -1,5 +1,5 @@
-include ':app', ':base', ':datasource:local', ':datasource:remote', ':models:remote-model',
-        ':models:local-model', ':models:datasource-model', ':models:entitiy-model',
-        ':models:ui-model', ':models:mapper', ':features:top-rated-movies',
-        ':presentation:top-rated-movie-presentation'
+include ':app', ':base', ':datastore:local', ':datastore:remote', ':features:topratedmovies',
+        ':models:localmodel',':models:remotemodel', ':models:datasourcemodel',':models:entitymodel',
+        ':models:uimodel', ':models:mapper', ':presentation:topratedmoviepresentation',
+
 rootProject.name='AnotherMovieApp'

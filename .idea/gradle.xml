@@ -8,22 +8,23 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AnotherMovieApp" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
-            <option value="$PROJECT_DIR$/datasource" />
-            <option value="$PROJECT_DIR$/datasource/local" />
-            <option value="$PROJECT_DIR$/datasource/remote" />
+            <option value="$PROJECT_DIR$/datastore" />
+            <option value="$PROJECT_DIR$/datastore/local" />
+            <option value="$PROJECT_DIR$/datastore/remote" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/top-rated-movies" />
+            <option value="$PROJECT_DIR$/features/topratedmovies" />
             <option value="$PROJECT_DIR$/models" />
-            <option value="$PROJECT_DIR$/models/datasource-model" />
-            <option value="$PROJECT_DIR$/models/entitiy-model" />
-            <option value="$PROJECT_DIR$/models/local-model" />
+            <option value="$PROJECT_DIR$/models/datasourcemodel" />
+            <option value="$PROJECT_DIR$/models/entitymodel" />
+            <option value="$PROJECT_DIR$/models/localmodel" />
             <option value="$PROJECT_DIR$/models/mapper" />
-            <option value="$PROJECT_DIR$/models/remote-model" />
-            <option value="$PROJECT_DIR$/models/ui-model" />
+            <option value="$PROJECT_DIR$/models/remotemodel" />
+            <option value="$PROJECT_DIR$/models/uimodel" />
             <option value="$PROJECT_DIR$/presentation" />
-            <option value="$PROJECT_DIR$/presentation/top-rated-movie-presentation" />
+            <option value="$PROJECT_DIR$/presentation/topratedmoviepresentation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

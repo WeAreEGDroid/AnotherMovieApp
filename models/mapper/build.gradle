@@ -12,9 +12,10 @@ android {
 }
 
 dependencies {
-    implementation project(':models:local-model')
-    implementation project(':models:remote-model')
-    implementation project(':models:datasource-model')
-    implementation project(':models:entitiy-model')
-    implementation project(':models:ui-model')
+    // since we use "api" all the modules implement "mapper" will implement all these modules implicitly
+    api project(":models:localmodel")
+    api project(":models:remotemodel")
+    api project(":models:datasourcemodel")
+    api project(":models:entitymodel")
+    api project(":models:uimodel")
 }

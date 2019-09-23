@@ -18,3 +18,7 @@ android {
     }
 }
 
+dependencies {
+    implementation project(":features:topratedmovies")
+    implementation 'com.squareup.picasso:picasso:2.71828'
+}

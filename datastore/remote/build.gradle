@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
+apply from: "$project.rootDir/tools/gradle/script/base.gradle"
+
+android {
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.0")
+    implementation project(":base")
+    api project(":models:remotemodel")
+}
