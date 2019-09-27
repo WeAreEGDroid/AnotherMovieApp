@@ -1,12 +1,12 @@
 package com.egdroid.datasource.remote.movie
 
 import com.egdroid.models.remote.movie.popularmovie.MovieResponse
-import retrofit2.Call
+import io.reactivex.Single
 import retrofit2.http.GET
 
 
 interface PopularMovieService {
 
     @GET("popular")
-    fun getMovies(): Call<MovieResponse>
+    fun getMovies(): Single<MovieResponse>
 }

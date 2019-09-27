@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.egdroid.features.popularmovies.usecase.PopularMoviesUseCaseFactory
+import com.egdroid.presentation.popularmoviespresentation.PopularMoviePresentationFactory.providePopularMoviesViewModel
 import kotlinx.android.synthetic.main.fragment_popular_movies.view.*
 
 /**
@@ -15,20 +15,27 @@ import kotlinx.android.synthetic.main.fragment_popular_movies.view.*
  */
 class PopularMoviesFragment : Fragment() {
 
+    private lateinit var popularMovieAdapter: PopularMovieAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_popular_movies, container, false)
 
-        val popularMovieUseCase = PopularMoviesUseCaseFactory.providePopularMoviesUseCase(activity!!)
-        val popularMovieAdapter = PopularMoviePresentationFactory.providePopularMoviesAdapter()
-        view.popularMoviesRecyclerView.setLayoutManager(LinearLayoutManager(activity))
-        view.popularMoviesRecyclerView.adapter = popularMovieAdapter
+        val popularMoviesViewModel = providePopularMoviesViewModel(activity!!)
 
-        popularMovieUseCase.popularmovies.observe(this, Observer {
+        setupRecyclerView(view)
+
+        popularMoviesViewModel.getMovies().observe(this, Observer {
             if (it != null) {
                 popularMovieAdapter.addPopularMovies(it)
             }
         })
         return view
+    }
+
+    private fun setupRecyclerView(view: View) {
+        popularMovieAdapter = PopularMoviePresentationFactory.providePopularMoviesAdapter()
+        view.popularMoviesRecyclerView.setLayoutManager(LinearLayoutManager(activity))
+        view.popularMoviesRecyclerView.adapter = popularMovieAdapter
     }
 }

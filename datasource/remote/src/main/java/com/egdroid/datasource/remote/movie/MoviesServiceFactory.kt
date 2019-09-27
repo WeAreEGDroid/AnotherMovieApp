@@ -2,6 +2,7 @@ package com.egdroid.datasource.remote.movie
 
 import android.content.Context
 import com.egdroid.datasource.remote.BuildConfig
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -24,6 +25,7 @@ object MoviesServiceFactory {
         return Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/movie/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(provideOkHttpClient(context))
                 .build()
     }

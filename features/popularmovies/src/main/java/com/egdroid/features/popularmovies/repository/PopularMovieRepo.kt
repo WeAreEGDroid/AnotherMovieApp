@@ -1,42 +1,39 @@
 package com.egdroid.features.popularmovies.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.egdroid.datasource.local.movie.MovieLocalDatabase
 import com.egdroid.datasource.remote.movie.PopularMovieService
 import com.egdroid.mapper.MovieMapper
 import com.egdroid.model.datasource.MovieDataSource
-import com.egdroid.models.remote.movie.popularmovie.MovieResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import kotlin.concurrent.thread
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+
 
 class PopularMovieRepo(private val database: MovieLocalDatabase,
                        private val popularMovieService: PopularMovieService,
                        private val mapper: MovieMapper) {
 
-    fun getLocalMovies(): LiveData<List<MovieDataSource>> {
-        getRemoteMovies()
-        return Transformations.map(database.movieDao().getAllMovies()) {
-            mapper.mapMovieLocalToDataSource(it)
-        }
+    fun getMovies(): Flowable<List<MovieDataSource>> {
+        return Flowable.merge(getLocalMovies(), getRemoteMovies())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 
-    private fun getRemoteMovies() {
-        popularMovieService.getMovies().enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(call: Call<MovieResponse>,
-                                    response: Response<MovieResponse>) {
-                if (response.isSuccessful) {
-                    thread {
-                        database.movieDao().deleteAllMovies()
-                        database.movieDao()
-                                .insertAllMovies(mapper.mapMovieResponseToLocalMovie(response.body().results!!))
-                    }
-                }
-            }
+    private fun getLocalMovies(): Flowable<List<MovieDataSource>> {
+        return database.movieDao().getAllMovies().map {
+            mapper.mapMovieLocalToDataSource(it)
+        }.toFlowable()
+    }
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable?) {}
-        })
+    private fun getRemoteMovies(): Flowable<List<MovieDataSource>> {
+        return popularMovieService.getMovies().doOnSuccess {
+            database.movieDao().deleteAllMovies()
+                    .doOnComplete {
+                        database.movieDao()
+                                .insertAllMovies(mapper.mapMovieResponseToLocalMovie(it.results!!))
+                    }
+        }.map {
+            mapper.mapMovieResponseToDataSource(it.results!!)
+        }.toFlowable()
     }
 }

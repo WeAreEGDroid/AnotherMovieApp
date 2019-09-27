@@ -1,2 +1,0 @@
-package com.egdroid.presentation.popularmoviespresentation.viewmodel
-
