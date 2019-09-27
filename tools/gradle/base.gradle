@@ -47,16 +47,16 @@ dependencies {
     // Dependency Injection
     api deps.dependencyInjection.dagger
     api deps.dependencyInjection.daggerSupportAndroid
-    annotationProcessor deps.dependencyInjection.daggerCompiler
-    annotationProcessor deps.dependencyInjection.daggerAndroidCompiler
+    kapt deps.dependencyInjection.daggerCompiler
+    kapt deps.dependencyInjection.daggerAndroidCompiler
 
     // View Binding
     api deps.viewBinding.butterknife
-    annotationProcessor deps.viewBinding.butterknifeCompiler
+    kapt deps.viewBinding.butterknifeCompiler
 
     // Images
     api deps.image.glide
-    annotationProcessor deps.image.glideCompiler
+    kapt deps.image.glideCompiler
 
     // Network
     implementation deps.network.retrofit
