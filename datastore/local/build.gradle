@@ -10,3 +10,7 @@ android {
         }
     }
 }
+
+dependencies{
+    api project(":models:localmodel")
+}

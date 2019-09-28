@@ -35,14 +35,29 @@ public final class MovieMapper {
         return movieDataSourceList;
     }
 
+    // map list of MovieRemoteData to list of MovieDataSource
+    public List<MovieDataSource> mapLocalToDataSource(List<MovieLocal> movieLocalResponse) {
+        List<MovieDataSource> movieDataSourceList = new ArrayList<>();
+        for (MovieLocal movieLocalData : movieLocalResponse) {
+            MovieDataSource movieDataSource = new MovieDataSource(
+                    movieLocalData.movieId,
+                    movieLocalData.title,
+                    movieLocalData.originalTitle,
+                    movieLocalData.overview,
+                    movieLocalData.posterPath);
+            movieDataSourceList.add(movieDataSource);
+        }
+        return movieDataSourceList;
+    }
+
     // dummy
     public MovieDataSource mapMovieLocalToDataSource(MovieLocal movieLocalResponse) {
         return new MovieDataSource(
-                movieLocalResponse.getId(),
-                movieLocalResponse.getTitle(),
-                movieLocalResponse.getOriginalTitle(),
-                movieLocalResponse.getOverview(),
-                movieLocalResponse.getPosterPath()
+                movieLocalResponse.movieId,
+                movieLocalResponse.title,
+                movieLocalResponse.originalTitle,
+                movieLocalResponse.overview,
+                movieLocalResponse.posterPath
         );
     }
 

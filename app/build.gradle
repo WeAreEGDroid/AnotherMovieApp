@@ -5,6 +5,16 @@ apply from: "$project.rootDir/tools/gradle/script/base.gradle"
 android {
     defaultConfig {
         applicationId "com.egdroid.movieapp"
+        // we add this javaCompileOptions
+        // to solve this error : Room - Schema export directory is not provided to the
+        // annotation processor so we cannot export the schema.
+        // explanation : You can set annotation processor argument (room.schemaLocation)
+        // to tell Room to export the schema into a folder
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {

@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView topRatedMoviesRecyclerView;
     MoviesAdapter moviesAdapter;
     TopRatedMovieRepository topRatedMovieRepository;
-    List<MovieDataSource> topRatedMoviesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         topRatedMoviesRecyclerView.setHasFixedSize(true);
         topRatedMoviesRecyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(this), DividerItemDecoration.VERTICAL));
 
-        topRatedMovieRepository.getTopRatedMovies().observe(this, movieDataSources -> {
+        topRatedMovieRepository.getRefreshedTopRatedMoviesList().observe(this, movieDataSources -> {
             if (movieDataSources != null && !movieDataSources.isEmpty()) {
                 moviesAdapter = new MoviesAdapter(MainActivity.this, movieDataSources);
                 topRatedMoviesRecyclerView.setAdapter(moviesAdapter);

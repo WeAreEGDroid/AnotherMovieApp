@@ -1,98 +1,72 @@
 package com.egdroid.models.localmodel;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 @Entity(tableName = "movies")
-    public class MovieLocal {
+public class MovieLocal {
+
     @PrimaryKey
-    @SerializedName("id")
-    private int id;
-    @SerializedName("release_date")
-    private String releaseDate;
-    @SerializedName("overview")
-    private String overview;
-    @SerializedName("vote_average")
-    private double voteAverage;
-    @SerializedName("title")
-    private String title;
-    @SerializedName("genre_ids")
-    private List<Integer> genreIds;
-    @SerializedName("original_title")
-    private String originalTitle;
-    @SerializedName("original_language")
-    private String originalLanguage;
-    @SerializedName("backdrop_path")
-    private String backdropPath;
-    @SerializedName("adult")
-    private boolean adult;
-    @SerializedName("poster_path")
-    private String posterPath;
-    @SerializedName("video")
-    private boolean video;
-    @SerializedName("vote_count")
-    private int voteCount;
-    @SerializedName("popularity")
-    private double popularity;
+    @ColumnInfo(name = "movie_id")
+    public int movieId;
 
-    public int getId() {
-        return id;
+    //To store the fields in table, room must have access to that field.
+    // You can either make the field public or provide public getter and setter for the field
+    @ColumnInfo(name = "release_date")
+    public String releaseDate;
+
+    @ColumnInfo(name = "overview")
+    public String overview;
+
+    @ColumnInfo(name = "vote_average")
+    public double voteAverage;
+
+    public String title;
+
+    //the entity class can have only primitive java data types which will be saved in respective columns by Room DB
+    //when we need to store object as is in one column, we use "Type Converters"
+    public List<Integer> genreIds;
+
+    @ColumnInfo(name = "original_title")
+    public String originalTitle;
+
+    @ColumnInfo(name = "original_language")
+    public String originalLanguage;
+
+    @ColumnInfo(name = "backdrop_path")
+    public String backdropPath;
+
+    public boolean adult;
+
+    @ColumnInfo(name = "poster_path")
+    public String posterPath;
+
+    public boolean video;
+
+    @ColumnInfo(name = "vote_count")
+    public int voteCount;
+
+    public double popularity;
+
+    public MovieLocal(int movieId, String releaseDate, String overview, double voteAverage, String title, List<Integer> genreIds, String originalTitle, String originalLanguage, String backdropPath, boolean adult, String posterPath, boolean video, int voteCount, double popularity) {
+        this.movieId = movieId;
+        this.releaseDate = releaseDate;
+        this.overview = overview;
+        this.voteAverage = voteAverage;
+        this.title = title;
+        this.genreIds = genreIds;
+        this.originalTitle = originalTitle;
+        this.originalLanguage = originalLanguage;
+        this.backdropPath = backdropPath;
+        this.adult = adult;
+        this.posterPath = posterPath;
+        this.video = video;
+        this.voteCount = voteCount;
+        this.popularity = popularity;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public double getVoteAverage() {
-        return voteAverage;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public List<Integer> getGenreIds() {
-        return genreIds;
-    }
-
-    public String getOriginalTitle() {
-        return originalTitle;
-    }
-
-    public String getOriginalLanguage() {
-        return originalLanguage;
-    }
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public boolean isAdult() {
-        return adult;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public boolean isVideo() {
-        return video;
-    }
-
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-    public double getPopularity() {
-        return popularity;
-    }
 }
 
