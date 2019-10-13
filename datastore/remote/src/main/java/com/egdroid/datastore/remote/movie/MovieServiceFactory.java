@@ -2,6 +2,7 @@ package com.egdroid.datastore.remote.movie;
 
 import android.content.Context;
 import com.egdroid.datastore.remote.BuildConfig;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.File;
 
@@ -25,6 +26,7 @@ public class MovieServiceFactory {
         return new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org")
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(makeOkHttpClient(context))
                 .build();
     }
@@ -45,11 +47,11 @@ public class MovieServiceFactory {
         return new OkHttpClient().newBuilder()
                 .addInterceptor(new AuthInterceptor())
                 // Application interceptors : Are definitely invoked once, even if the HTTP response is served from the cache
-                .addInterceptor(new OfflineCachingInterceptor(context))
+                //.addInterceptor(new OfflineCachingInterceptor(context))
                 // Network Interceptors: Are not invoked if their response is cached which short-circuit the network
 //                .addNetworkInterceptor(new OnlineCachingInterceptor())
                 .addInterceptor(makeLoggingInterceptor())
-                .cache(makeCacheFile(context))
+                //.cache(makeCacheFile(context))
                 .build();
 
         // we add offlineCaching first then onlineCaching to get the response from online first, then offline
@@ -79,10 +81,10 @@ public class MovieServiceFactory {
         return logging;
     }
 
-    private Cache makeCacheFile(Context context) {
-        int cacheSize = 10 * 1024 * 1024; // 10 MB
-        File file = new File(context.getCacheDir(), "responses");
-        return new Cache(file, cacheSize);
-    }
+//    private Cache makeCacheFile(Context context) {
+//        int cacheSize = 10 * 1024 * 1024; // 10 MB
+//        File file = new File(context.getCacheDir(), "responses");
+//        return new Cache(file, cacheSize);
+//    }
 
 }

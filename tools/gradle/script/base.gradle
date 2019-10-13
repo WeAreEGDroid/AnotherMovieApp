@@ -26,6 +26,7 @@ dependencies {
     implementation deps.architecturecomponents.lifecycles
     implementation deps.architecturecomponents.room
     annotationProcessor deps.architecturecomponents.room_compiler
+    implementation deps.architecturecomponents.room_rx
 
     // Rx
     api deps.rx.java

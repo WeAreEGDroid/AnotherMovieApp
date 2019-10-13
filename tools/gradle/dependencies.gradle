@@ -82,6 +82,7 @@ def architecturecomponents = [
         lifecycles   : "android.arch.lifecycle:common-java8:1.1.0",
         room         : "androidx.room:room-runtime:${versions.room}",
         room_compiler: "androidx.room:room-compiler:${versions.room}",
+        room_rx      : "androidx.room:room-rxjava2:${versions.room}"
 ]
 
 def log = [

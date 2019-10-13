@@ -9,16 +9,18 @@ import com.egdroid.models.localmodel.MovieLocal;
 
 import java.util.List;
 
+import io.reactivex.Maybe;
+
 // Contains the methods used for accessing the database , it can be an interface or an abstract class
 @Dao
 public interface MovieDao {
 
     @Query("SELECT * FROM movies")
-    public List<MovieLocal> getTopRatedMovies();
+    Maybe<List<MovieLocal>> getTopRatedMovies();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(MovieLocal movieLocal);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(MovieLocal ... movieLocals);
+    void insertAll(List<MovieLocal> movieLocals);
 }

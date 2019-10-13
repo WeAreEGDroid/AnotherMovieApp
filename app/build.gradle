@@ -31,4 +31,6 @@ android {
 dependencies {
     implementation project(":features:topratedmovies")
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation project(path: ':presentation:topratedmoviepresentation')
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 }

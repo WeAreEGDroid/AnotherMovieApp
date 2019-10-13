@@ -11,6 +11,28 @@ import java.util.List;
 
 public final class MovieMapper {
 
+    public List<MovieLocal> mapMovieRemoteToLocal(List<MovieResponse.MovieRemoteData> remoteMovies) {
+        List<MovieLocal> movieLocalList = new ArrayList<>();
+        for (MovieResponse.MovieRemoteData remoteMovie : remoteMovies) {
+            MovieLocal movieLocal = new MovieLocal(remoteMovie.getId(),
+                    remoteMovie.getReleaseDate(),
+                    remoteMovie.getOverview(),
+                    remoteMovie.getVoteAverage(),
+                    remoteMovie.getTitle(),
+                    remoteMovie.getGenreIds(),
+                    remoteMovie.getOriginalTitle(),
+                    remoteMovie.getOriginalLanguage(),
+                    remoteMovie.getBackdropPath(),
+                    remoteMovie.getAdult(),
+                    remoteMovie.getPosterPath(),
+                    remoteMovie.getVideo(),
+                    remoteMovie.getVoteCount(),
+                    remoteMovie.getPopularity());
+            movieLocalList.add(movieLocal);
+        }
+        return movieLocalList;
+    }
+
     public MovieDataSource mapMovieRemoteToDataSource(MovieResponse.MovieRemoteData movieRemoteResponse) {
         return new MovieDataSource(
                 movieRemoteResponse.getId(),
@@ -72,6 +94,21 @@ public final class MovieMapper {
         );
     }
 
+    public List<MovieEntity> mapMovieDataSourceToEntity(List<MovieDataSource> movieDataSources) {
+        List<MovieEntity> movieEntityList = new ArrayList<>();
+        for (MovieDataSource movieDataSource : movieDataSources) {
+            MovieEntity movieEntity = new MovieEntity(
+                    movieDataSource.getId(),
+                    movieDataSource.getTitle(),
+                    movieDataSource.getOriginalTitle(),
+                    movieDataSource.getOverview(),
+                    movieDataSource.getPosterPath()
+            );
+            movieEntityList.add(movieEntity);
+        }
+        return movieEntityList;
+    }
+
     // dummy
     public MovieUI mapMovieEntityToViewModel(MovieEntity movieEntity) {
         return new MovieUI(
@@ -81,5 +118,20 @@ public final class MovieMapper {
                 movieEntity.getOverview(),
                 movieEntity.getPosterPath()
         );
+    }
+
+    public List<MovieUI> mapMovieEntityToMovieUi(List<MovieEntity> movieEntities) {
+        List<MovieUI> movieUIList = new ArrayList<>();
+        for (MovieEntity movieEntity : movieEntities) {
+            MovieUI movieUI = new MovieUI(
+                    movieEntity.getId(),
+                    movieEntity.getTitle(),
+                    movieEntity.getOriginalTitle(),
+                    movieEntity.getOverview(),
+                    movieEntity.getPosterPath()
+            );
+            movieUIList.add(movieUI);
+        }
+        return movieUIList;
     }
 }

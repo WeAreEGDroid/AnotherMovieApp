@@ -16,4 +16,23 @@ public class MovieUI {
         this.posterPath = posterPath;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
 }

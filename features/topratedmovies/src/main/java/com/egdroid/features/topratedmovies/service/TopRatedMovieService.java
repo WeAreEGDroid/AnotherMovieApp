@@ -1,7 +1,8 @@
 package com.egdroid.features.topratedmovies.service;
+
 import com.egdroid.models.remotemodel.MovieResponse;
 
-import retrofit2.Call;
+import io.reactivex.Maybe;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -9,5 +10,5 @@ import retrofit2.http.Query;
 public interface TopRatedMovieService {
 
     @GET("/3/movie/top_rated")
-    Call<MovieResponse> getTopRatedMovies(@Query("page")int pageNumber);
+    Maybe<MovieResponse> getTopRatedMovies(@Query("page") int pageNumber);
 }
