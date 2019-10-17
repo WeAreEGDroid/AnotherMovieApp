@@ -6,10 +6,6 @@ import com.egdroid.presentation.popularmoviespresentation.popularmovies.PopularM
 
 object PopularMoviePresentationFactory {
 
-    fun providePopularMoviesAdapter(): PopularMovieAdapter {
-        return PopularMovieAdapter()
-    }
-
     fun providePopularMoviesViewModel(context: Context): PopularMoviesViewModel {
         return PopularMoviesViewModel(PopularMoviesUseCaseFactory.providePopularMoviesUseCase(context))
     }

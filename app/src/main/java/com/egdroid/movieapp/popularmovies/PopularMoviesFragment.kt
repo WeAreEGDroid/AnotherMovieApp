@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.egdroid.movieapp.R
 import com.egdroid.presentation.popularmoviespresentation.PopularMoviePresentationFactory.providePopularMoviesViewModel
 import kotlinx.android.synthetic.main.fragment_popular_movies.view.*
 
@@ -34,7 +35,7 @@ class PopularMoviesFragment : Fragment() {
     }
 
     private fun setupRecyclerView(view: View) {
-        popularMovieAdapter = PopularMoviePresentationFactory.providePopularMoviesAdapter()
+        popularMovieAdapter = PopularMovieAdapter()
         view.popularMoviesRecyclerView.setLayoutManager(LinearLayoutManager(activity))
         view.popularMoviesRecyclerView.adapter = popularMovieAdapter
     }

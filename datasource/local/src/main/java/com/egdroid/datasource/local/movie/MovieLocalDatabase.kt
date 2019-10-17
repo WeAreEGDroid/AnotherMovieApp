@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.egdroid.models.local.movie.MovieLocal
 
-@Database(entities = [MovieLocal::class], version = 1)
+@Database(entities = [MovieLocal::class], version = 1, exportSchema = false)
 @TypeConverters(DataConverter::class)
 abstract class MovieLocalDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao

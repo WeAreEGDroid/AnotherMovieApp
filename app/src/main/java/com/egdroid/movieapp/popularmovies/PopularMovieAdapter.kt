@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.egdroid.model.datasource.MovieDataSource
+import com.egdroid.movieapp.R
 import kotlinx.android.synthetic.main.popular_movie_row.view.*
 
 class PopularMovieAdapter : RecyclerView.Adapter<PopularMovieAdapter.MovieViewHolder>() {
