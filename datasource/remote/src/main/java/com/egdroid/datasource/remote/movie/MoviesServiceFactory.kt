@@ -1,7 +1,7 @@
 package com.egdroid.datasource.remote.movie
 
 import android.content.Context
-import com.egdroid.datasource.remote.BuildConfig
+import android.util.Base64
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Cache
 import okhttp3.CacheControl
@@ -15,6 +15,12 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 object MoviesServiceFactory {
+
+    external fun getNativeKey(): String
+
+    init {
+        System.loadLibrary("keys")
+    }
 
     fun provideRetrofitService(context: Context): PopularMovieService {
         return provideRetrofit(context).create(PopularMovieService::class.java)
@@ -49,7 +55,7 @@ object MoviesServiceFactory {
     private fun provideAuthInterceptor(): Interceptor {
         return Interceptor { chain ->
             val request = chain.request().newBuilder()
-                    .addHeader("api_key", BuildConfig.ApiKey)
+                    .addHeader("api_key", getNativeKey())
                     .addHeader("page", "1")
                     .addHeader("language", "en-US")
                     .build()
@@ -58,10 +64,11 @@ object MoviesServiceFactory {
     }
 
     private fun provideQueryParamsInterceptor(): Interceptor {
+        val apiKey = String(Base64.decode(getNativeKey(), Base64.DEFAULT))
         return Interceptor { chain ->
             var request = chain.request()
             val url = request.url().newBuilder()
-                    .addQueryParameter("api_key", BuildConfig.ApiKey)
+                    .addQueryParameter("api_key", apiKey)
                     .addQueryParameter("page", "1")
                     .addQueryParameter("language", "en-US")
                     .build()

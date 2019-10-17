@@ -6,6 +6,11 @@ android {
     defaultConfig {
         applicationId "com.egdroid.movieapp"
     }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true
