@@ -6,13 +6,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "ApiKey", AnotherMovieApp_ApiKey
             resValue 'string', "api_key", AnotherMovieApp_ApiKey
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "ApiKey", AnotherMovieApp_ApiKey
             resValue 'string', "api_key", AnotherMovieApp_ApiKey
