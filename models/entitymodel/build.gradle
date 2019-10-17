@@ -9,12 +9,5 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-dependencies {
-    api project(":models:remotemodel")
-    api project(":models:localmodel")
-    api project(":models:datasourcemodel")
-    api project(":models:uimodel")
-    api project(":models:entitymodel")
 }

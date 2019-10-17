@@ -2,6 +2,8 @@ package com.egdroid.mapper
 
 import com.egdroid.model.datasource.MovieDataSource
 import com.egdroid.models.local.movie.MovieLocal
+import com.egdroid.models.popularmovies.MovieEntity
+import com.egdroid.models.popularmovies.MovieUi
 import com.egdroid.models.remote.movie.popularmovie.MovieRemote
 
 class MovieMapper {
@@ -26,6 +28,32 @@ class MovieMapper {
             ))
         }
         return moviesDataSource
+    }
+
+    fun mapMovieDataSourceToMovieEntity(movieDataSources: List<MovieDataSource>): List<MovieEntity> {
+        val movieEntities = mutableListOf<MovieEntity>()
+        for (movie in movieDataSources) {
+            movieEntities.add(MovieEntity(
+                    movie.id!!,
+                    movie.title,
+                    movie.overview,
+                    movie.posterPath
+            ))
+        }
+        return movieEntities
+    }
+
+    fun mapMovieEntityToMovieUi(movieEntities: List<MovieEntity>): List<MovieUi> {
+        val movies = mutableListOf<MovieUi>()
+        for (movie in movieEntities) {
+            movies.add(MovieUi(
+                    movie.id,
+                    movie.title,
+                    movie.overview,
+                    movie.posterPath
+            ))
+        }
+        return movies
     }
 
     fun mapMovieResponseToDataSource(moviesResponse: List<MovieRemote>): List<MovieDataSource> {
