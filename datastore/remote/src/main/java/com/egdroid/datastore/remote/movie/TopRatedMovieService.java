@@ -1,4 +1,4 @@
-package com.egdroid.features.topratedmovies.service;
+package com.egdroid.datastore.remote.movie;
 import com.egdroid.models.remotemodel.MovieResponse;
 
 import retrofit2.Call;

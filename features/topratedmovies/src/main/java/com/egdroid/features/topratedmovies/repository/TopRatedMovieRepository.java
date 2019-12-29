@@ -11,7 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.egdroid.datastore.local.movie.MovieDao;
 import com.egdroid.datastore.local.movie.MovieDatabase;
 import com.egdroid.datastore.remote.movie.MovieServiceFactory;
-import com.egdroid.features.topratedmovies.service.TopRatedMovieService;
+import com.egdroid.datastore.remote.movie.TopRatedMovieService;
 import com.egdroid.models.datasourcemodel.MovieDataSource;
 import com.egdroid.models.localmodel.MovieLocal;
 import com.egdroid.models.mapper.MovieMapper;

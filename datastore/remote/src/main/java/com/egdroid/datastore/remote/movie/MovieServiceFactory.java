@@ -57,7 +57,7 @@ public class MovieServiceFactory {
         // & cache it for a 60 sec by ( onLineCache ).
 
         // for the second call: if this call within the 60 sec (whether there is a network or not),
-        // show the response from the cache without making the connection by ( onLineCache )
+        // show the response from the cache without making the connection by ( onLineCache == networkInterceptor)
         // if this call after the 60 sec: check if there is a network, then make a new connection by ( onLineCache )
         // else if there isn't a network, ( onLineCache ) will fail & the condition in the ( offlineCache )
         // will be true , so get the existed response that was stored by ( onLineCache ) &

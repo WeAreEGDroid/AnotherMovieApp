@@ -25,6 +25,7 @@
             <option value="$PROJECT_DIR$/models/uimodel" />
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/presentation/topratedmoviepresentation" />
+            <option value="$PROJECT_DIR$/test" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

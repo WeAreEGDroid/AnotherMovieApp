@@ -16,7 +16,7 @@ public class OnlineCachingInterceptor implements Interceptor {
         Response response = chain.proceed(chain.request());
         /*
          *  If there is Internet, get the cache that was stored 60 seconds ago.
-         *  If the cache is older than 5 seconds, then discard it,
+         *  If the cache is older than 60 seconds, then discard it,
          *  and indicate an error in fetching the response --> will return "onFailure"
          *  The 'max-age' attribute is responsible for this behavior.
          */

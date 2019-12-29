@@ -22,5 +22,13 @@ public class AuthInterceptor implements Interceptor {
 
         request = request.newBuilder().url(url).build();
         return chain.proceed(request);
+
+
+        // momken n3mel add ll header zay keda
+        //  Request request = chain.request().newBuilder().addHeader(" "," ").build();
+        //  return chain.proceed(request);
     }
+
+
+
 }

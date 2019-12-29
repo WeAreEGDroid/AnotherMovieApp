@@ -2,11 +2,11 @@ package com.egdroid.models.entitymodel;
 
 public class MovieEntity {
 
-    private int id;
-    private String overview;
-    private String title;
-    private String originalTitle;
-    private String posterPath;
+    private final int id;
+    private final String overview;
+    private final String title;
+    private final String originalTitle;
+    private final String posterPath;
 
     public MovieEntity(int id, String title, String originalTitle, String overview, String posterPath) {
         this.id = id;

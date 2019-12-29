@@ -7,13 +7,13 @@ import java.util.List;
 public class MovieResponse {
 
     @SerializedName("results")
-    private List<MovieRemoteData> topRatedMovies;
+    private final List<MovieRemoteData> topRatedMovies = null;
     @SerializedName("total_pages")
-    private int totalPages;
+    private final int totalPages = 0;
     @SerializedName("total_results")
-    private int totalResults;
+    private final int totalResults = 0;
     @SerializedName("page")
-    private int page;
+    private final int page = 0;
 
     public List<MovieRemoteData> getTopRatedMovies() {
         return topRatedMovies;
@@ -34,36 +34,44 @@ public class MovieResponse {
     public class MovieRemoteData {
 
         @SerializedName("release_date")
-        private String releaseDate;
+        private final String releaseDate = null;
         @SerializedName("overview")
-        private String overview;
+        private final String overview = null;
         @SerializedName("vote_average")
-        private double voteAverage;
+        private final double voteAverage = 0.0;
         @SerializedName("title")
-        private String title;
+        private final String title = null;
         @SerializedName("genre_ids")
-        private List<Integer> genreIds;
+        private final List<Integer> genreIds = null;
         @SerializedName("original_title")
-        private String originalTitle;
+        private final String originalTitle = null;
         @SerializedName("original_language")
-        private String originalLanguage;
+        private final String originalLanguage = null;
         @SerializedName("backdrop_path")
-        private String backdropPath;
+        private final String backdropPath = null;
         @SerializedName("adult")
-        private boolean adult;
+        private final boolean adult = false;
         @SerializedName("id")
-        private int id;
+        private final int id = 0;
         @SerializedName("poster_path")
-        private String posterPath;
+        private final String posterPath = null;
         @SerializedName("video")
-        private boolean video;
+        private final boolean video = false;
         @SerializedName("vote_count")
-        private int voteCount;
+        private final int voteCount = 0;
         @SerializedName("popularity")
-        private double popularity;
+        private final double popularity = 0.0;
 
         public String getReleaseDate() {
             return releaseDate;
+        }
+
+        public boolean isAdult() {
+            return adult;
+        }
+
+        public boolean isVideo() {
+            return video;
         }
 
         public String getOverview() {

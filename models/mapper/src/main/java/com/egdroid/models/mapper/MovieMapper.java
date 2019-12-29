@@ -21,15 +21,15 @@ public final class MovieMapper {
     }
 
     // map list of MovieRemoteData to list of MovieDataSource
-    public List<MovieDataSource> mapRemoteToDataSource(List<MovieResponse.MovieRemoteData> movieRemoteResponse) {
+    public List<MovieDataSource> mapRemoteListToDataSourceList(List<MovieResponse.MovieRemoteData> movieRemoteList) {
         List<MovieDataSource> movieDataSourceList = new ArrayList<>();
-        for (MovieResponse.MovieRemoteData movieRemoteData : movieRemoteResponse) {
+        for (MovieResponse.MovieRemoteData movieRemoteObject : movieRemoteList) {
             MovieDataSource movieDataSource = new MovieDataSource(
-                    movieRemoteData.getId(),
-                    movieRemoteData.getTitle(),
-                    movieRemoteData.getOriginalTitle(),
-                    movieRemoteData.getOverview(),
-                    movieRemoteData.getPosterPath());
+                    movieRemoteObject.getId(),
+                    movieRemoteObject.getTitle(),
+                    movieRemoteObject.getOriginalTitle(),
+                    movieRemoteObject.getOverview(),
+                    movieRemoteObject.getPosterPath());
             movieDataSourceList.add(movieDataSource);
         }
         return movieDataSourceList;
