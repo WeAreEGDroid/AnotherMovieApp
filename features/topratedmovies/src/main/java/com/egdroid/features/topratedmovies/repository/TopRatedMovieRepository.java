@@ -88,7 +88,8 @@ public class TopRatedMovieRepository {
                 if (response.isSuccessful()) { //Successful may return body or errorBody
                     if (response.body() != null) {
                         List<MovieResponse.MovieRemoteData> moviesList = response.body().getTopRatedMovies();
-                        remoteMovies.postValue(movieMapper.mapRemoteToDataSource(moviesList));
+                        remoteMovies.postValue(movieMapper.mapRemoteListToDataSourceList(moviesList));
+
 
                        /* Instead of returning data from web service call, we are returning data
                         from db and making change to db via web service call in background.

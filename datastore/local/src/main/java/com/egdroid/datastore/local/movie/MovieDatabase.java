@@ -18,7 +18,7 @@ import java.util.Objects;
 public abstract class MovieDatabase extends RoomDatabase {
 
     private static MovieDatabase movieDatabase;
-
+// provide abstract getter methods for each @Dao
     public abstract MovieDao movieDao();
 
     public static MovieDatabase getInstance(Context context){

@@ -13,5 +13,6 @@ android {
 
 dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.0")
-    implementation project(":base")
+    implementation project(":base") // to be able to use Utils
+    api project(":models:remotemodel")
 }

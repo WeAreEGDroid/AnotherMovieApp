@@ -2,13 +2,11 @@ package com.egdroid.datastore.local.movie;
 
 import androidx.room.TypeConverter;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+// bt7wel el primitive l objects w el objects l primitive
+// each convert method should receive 1 parameter and have non void return type
 public class Converters {
 
     //This method takes our arrayList object as parameter and returns string representation for it so
@@ -23,7 +21,7 @@ public class Converters {
     }
 
     //While reading data back from Room Database, we get String form our arrayList which we need to convert back
-// so we need to provide the class of original object (in our case, List)
+    // so we need to provide the class of original object (in our case, List)
     @TypeConverter
     public static List<Integer> gettingListFromString(String genreIds) {
         List<Integer> list = new ArrayList<>();

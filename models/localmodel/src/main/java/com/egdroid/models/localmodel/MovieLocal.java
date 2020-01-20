@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 @Entity(tableName = "movies")
@@ -15,7 +13,7 @@ public class MovieLocal {
     @ColumnInfo(name = "movie_id")
     public int movieId;
 
-    //To store the fields in table, room must have access to that field.
+    //To store a field in table, room must have access to that field.
     // You can either make the field public or provide public getter and setter for the field
     @ColumnInfo(name = "release_date")
     public String releaseDate;
