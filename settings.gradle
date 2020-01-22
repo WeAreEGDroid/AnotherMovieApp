@@ -1,2 +1,5 @@
-include ':app'
+include ':app', ':base', ':datastore:local', ':datastore:remote', ':features:topratedmovies', ':test',
+        ':models:localmodel',':models:remotemodel', ':models:datasourcemodel',':models:entitymodel',
+        ':models:uimodel', ':models:mapper', ':presentation:topratedmoviepresentation',
+
 rootProject.name='AnotherMovieApp'

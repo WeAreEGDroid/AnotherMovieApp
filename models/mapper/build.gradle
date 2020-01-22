@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
+apply from: "$project.rootDir/tools/gradle/script/base.gradle"
+
+android {
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // since we use "api" all the modules implement "mapper" will implement all these modules implicitly
+    api project(":models:localmodel")
+    api project(":models:remotemodel")
+    api project(":models:datasourcemodel")
+    api project(":models:entitymodel")
+    api project(":models:uimodel")
+}

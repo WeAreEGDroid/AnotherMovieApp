@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AnotherMovieApp</string>
+    <string name="topRatedMovies">Top Reated Movies</string>
 </resources>

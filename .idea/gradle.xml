@@ -3,11 +3,31 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AnotherMovieApp" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/datastore" />
+            <option value="$PROJECT_DIR$/datastore/local" />
+            <option value="$PROJECT_DIR$/datastore/remote" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/topratedmovies" />
+            <option value="$PROJECT_DIR$/models" />
+            <option value="$PROJECT_DIR$/models/datasourcemodel" />
+            <option value="$PROJECT_DIR$/models/entitymodel" />
+            <option value="$PROJECT_DIR$/models/localmodel" />
+            <option value="$PROJECT_DIR$/models/mapper" />
+            <option value="$PROJECT_DIR$/models/remotemodel" />
+            <option value="$PROJECT_DIR$/models/uimodel" />
+            <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/presentation/topratedmoviepresentation" />
+            <option value="$PROJECT_DIR$/test" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
         <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
