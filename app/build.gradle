@@ -17,3 +17,9 @@ android {
         }
     }
 }
+
+dependencies{
+
+    implementation project(":presentation:popularmoviespresentation")
+
+}

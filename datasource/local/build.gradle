@@ -10,11 +10,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
 
-    dependencies{
-
-        api project(":models:localmodel")
-
-    }
-
+dependencies{
+    api project(":models:localmodel")
 }

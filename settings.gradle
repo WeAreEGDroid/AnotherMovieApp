@@ -1,3 +1,5 @@
 include ':app', ':common', ':models:remotemodel', ':models:localmodel', ':models:datasourcemodel',
+        'models:uimodel','models:entitymodel',
+        ':features:popularmovies', ':presentation:popularmoviespresentation',
         ':features:upcomingmovies', ':datasource:local', ':datasource:remote', ':models:mapper'
 rootProject.name = 'AnotherMovieApp'

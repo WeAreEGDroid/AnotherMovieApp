@@ -3,21 +3,18 @@ apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 apply from: "$project.rootDir/tools/gradle/base.gradle"
 
 android {
-    compileSdkVersion 28
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
-
-    implementation project(":models:remotemodel")
-    implementation project(":models:localmodel")
-    implementation project(":models:datasourcemodel")
-
+    api project(":models:remotemodel")
+    api project(":models:localmodel")
+    api project(":models:datasourcemodel")
+    api project(":models:uimodel")
+    api project(":models:entitymodel")
 }
